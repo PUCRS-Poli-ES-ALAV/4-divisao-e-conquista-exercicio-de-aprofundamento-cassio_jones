@@ -8,7 +8,14 @@ import java.util.Random;
 import static java.lang.Long.max;
 
 public class Algorithms {
-
+    long timer = System.nanoTime();
+    //INSERT METHOD
+    public void insert(@NotNull long[] vector){
+        Random rd = new Random();
+        for (int i = 0; i < vector.length; i++) {
+            vector[i] = rd.nextInt(vector.length*2);
+        }
+    }
 
     //EXERCISE II
     public int counterA, counterB = 0;
@@ -35,5 +42,16 @@ public class Algorithms {
             counterB++;
             return max(v1,v2);
         }
+    }
+    public void print(long[] vector){
+        insert(vector);
+        maxVal1(vector);
+        long resultB1 = System.nanoTime() - timer;
+        System.out.println("Iterations: "+counterA);
+        System.out.println("Elapsed Time: "+resultB1);
+        maxVal2(vector, 0, vector.length-1);
+        System.out.println("Iterations: "+counterB);
+        long result = System.nanoTime() - timer;
+        System.out.println("Elapsed Time: "+result);
     }
 }
